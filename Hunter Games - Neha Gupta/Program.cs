@@ -177,4 +177,105 @@ class Game
         CurrentTurn = Player1;
         TotalTurns = 0;
     }
-//game ends
+    public void Start()
+    {
+        while (!IsGameOver())
+        {
+            Board.Display();
+            Console.WriteLine($"{CurrentTurn.Name}'s turn. Enter move (U/D/L/R): ");
+            char move = char.ToUpper(Console.ReadKey().KeyChar);
+
+            if (IsValidMove(CurrentTurn, move))
+            {
+                CurrentTurn.Move(move);
+                if (Board.CollectGem(CurrentTurn))
+                {
+                    Console.WriteLine($"{CurrentTurn.Name} collected a gem!");
+                }
+
+                SwitchTurn();
+                TotalTurns++;
+            }
+            else
+            {
+                Console.WriteLine("Invalid move. Try again.");
+            }
+        }
+
+        Board.Display();
+        AnnounceWinner();
+    }
+
+    private void SwitchTurn()
+    {
+        CurrentTurn = (CurrentTurn == Player1) ? Player2 : Player1;
+    }
+
+    private bool IsGameOver()
+    {
+        return TotalTurns >= 30;
+    }
+
+    private void AnnounceWinner()
+    {
+        Console.WriteLine("Game Over!");
+
+        if (Player1.GemCount > Player2.GemCount)
+        {
+            Console.WriteLine($"{Player1.Name} wins with {Player1.GemCount} gems!");
+        }
+        else if (Player2.GemCount > Player1.GemCount)
+        {
+            Console.WriteLine($"{Player2.Name} wins with {Player2.GemCount} gems!");
+        }
+        else
+        {
+            Console.WriteLine("It's a tie!");
+        }
+    }
+
+    private bool IsValidMove(Player player, char direction)
+    {
+        int newX = player.Position.X;
+        int newY = player.Position.Y;
+
+        switch (direction)
+        {
+            case 'U':
+                newY--;
+                break;
+            case 'D':
+                newY++;
+                break;
+            case 'L':
+                newX--;
+                break;
+            case 'R':
+                newX++;
+                break;
+        }
+
+        // Check if the new position is within bounds
+        if (newX < 0 || newX >= 6 || newY < 0 || newY >= 6)
+        {
+            return false;
+        }
+
+        // Check if the new position contains an obstacle
+        if (Board.Grid[newX, newY].Occupant == "O")
+        {
+            return false;
+        }
+
+        return true;
+    }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        Game gemHunters = new Game();
+        gemHunters.Start();
+    }
+}
+//Game Ends
