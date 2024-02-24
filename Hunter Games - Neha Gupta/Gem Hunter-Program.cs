@@ -234,7 +234,8 @@ class Game
         }
     }
 
-    private bool IsValidMove(Player player, char direction)
+    private bool IsValidMove(Player player, char direction)  //valid move is only when in 6by6 matric have null position and p1 and p2 don't go outside the array
+        
     {
         int newX = player.Position.X;
         int newY = player.Position.Y;
@@ -270,7 +271,7 @@ class Game
         return true;
     }
 }
-class Program
+class Program //main program
 {
     static void Main(string[] args)
     {
