@@ -113,7 +113,7 @@ class Board  //board with matrix of 6*6
         Console.WriteLine();
     }
 
-    public bool IsValidMove(Player player, char direction)
+    public bool IsValidMove(Player player, char direction)  //calling methods for moving the players for turns when postion is valid
     {
         int newX = player.Position.X;
         int newY = player.Position.Y;
@@ -206,7 +206,7 @@ class Game
         AnnounceWinner();
     }
 
-    private void SwitchTurn()
+    private void SwitchTurn() //switch turns 
     {
         CurrentTurn = (CurrentTurn == Player1) ? Player2 : Player1;
     }
@@ -216,21 +216,21 @@ class Game
         return TotalTurns >= 30;
     }
 
-    private void AnnounceWinner()
+    private void AnnounceWinner()  //announing winner as per the player with maximum gems win the game
     {
         Console.WriteLine("Game Over!");
 
-        if (Player1.GemCount > Player2.GemCount)
+        if (Player1.GemCount > Player2.GemCount)  //p1 having gems more than p2
         {
             Console.WriteLine($"{Player1.Name} wins with {Player1.GemCount} gems!");
         }
-        else if (Player2.GemCount > Player1.GemCount)
+        else if (Player2.GemCount > Player1.GemCount)  //p2 having gems more than p1
         {
             Console.WriteLine($"{Player2.Name} wins with {Player2.GemCount} gems!");
         }
         else
         {
-            Console.WriteLine("It's a tie!");
+            Console.WriteLine("It's a tie!");  //p1 p2 ahaving equal gems
         }
     }
 
