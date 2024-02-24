@@ -31,43 +31,43 @@ class Player //Create prayer class
 
         switch (direction)
         {
-            case 'U':
+            case 'U':  //for up
                 newPosition.Y = Math.Max(0, Position.Y - 1);
                 break;
-            case 'D':
+            case 'D': //for down
                 newPosition.Y = Math.Min(5, Position.Y + 1);
                 break;
-            case 'L':
+            case 'L': //for left
                 newPosition.X = Math.Max(0, Position.X - 1);
                 break;
-            case 'R':
+            case 'R': //for right
                 newPosition.X = Math.Min(5, Position.X + 1);
                 break;
         }
 
-        Position = newPosition;
+        Position = newPosition; //postion getting upgraded as per next moves of player 1 and player 2 i.e., p1 and p2
     }
 }
 
-class Cell
+class Cell //creating class cell for occupants - gems and obstacles 
 {
     public string Occupant { get; set; }
 }
 
-class Board
+class Board  //board with matrix of 6*6 
 {
     public Cell[,] Grid { get; }
 
     public Board()
     {
-        Grid = new Cell[6, 6];
-        InitializeBoard();
+        Grid = new Cell[6, 6]; 
+        InitializeBoard();  //board intitalized
     }
 
-    private void InitializeBoard()
+    private void InitializeBoard()  
     {
-        // Initialize the grid with empty cells
-        for (int i = 0; i < 6; i++)
+        // Initialize the grid 
+        for (int i = 0; i < 6; i++)   
         {
             for (int j = 0; j < 6; j++)
             {
