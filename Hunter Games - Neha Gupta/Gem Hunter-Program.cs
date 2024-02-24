@@ -213,7 +213,7 @@ class Game
 
     private bool IsGameOver()
     {
-        return TotalTurns >= 30;
+        return TotalTurns >= 30; //game's toal turns that this condition satisfies loop of turns switching i.e.,15 for each player
     }
 
     private void AnnounceWinner()  //announing winner as per the player with maximum gems win the game
