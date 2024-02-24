@@ -84,7 +84,7 @@ class Board  //board with matrix of 6*6
         PlaceRandomElements("O", 5);
     }
 
-    private void PlaceRandomElements(string element, int count)
+    private void PlaceRandomElements(string element, int count)  //placing randomly the elemnetes such as obstacles and gems
     {
         Random random = new Random();
         for (int i = 0; i < count; i++)
@@ -100,8 +100,8 @@ class Board  //board with matrix of 6*6
         }
     }
 
-    public void Display()
-    {
+    public void Display()   //this will display the board 
+     {
         for (int i = 0; i < 6; i++)
         {
             for (int j = 0; j < 6; j++)
