@@ -1,6 +1,6 @@
 ﻿using System;
 
-class Position
+class Position  //Create postion class and initialize it with X and Y 
 {
     public int X { get; set; }
     public int Y { get; set; }
@@ -12,7 +12,7 @@ class Position
     }
 }
 
-class Player
+class Player //Create prayer class
 {
     public string Name { get; }
     public Position Position { get; set; }
@@ -25,7 +25,7 @@ class Player
         GemCount = 0;
     }
 
-    public void Move(char direction)
+    public void Move(char direction)  //Declare method move for choosing directions
     {
         Position newPosition = new Position(Position.X, Position.Y);
 
